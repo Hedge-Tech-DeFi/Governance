@@ -164,7 +164,7 @@ contract GovernorAlpha {
   }
 
   function state(uint256 proposalId) public view returns (ProposalState) {
-    require(proposalCount >= proposalId && proposalId >= 0, "GovernorAlpha::state: invalid proposal id");
+    require(proposalCount > proposalId && proposalId >= 0, "GovernorAlpha::state: invalid proposal id");
     
     Proposal storage proposal = proposals[proposalId];
     if (proposal.canceled) {
