@@ -10,10 +10,10 @@ contract GovernorAlpha {
   string public constant name = "Hedge Tech Governor Alpha";
 
   /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
-  function quorumVotes() public pure returns (uint256) { return 4000e18; } // 4,000 = 4% of HTG
+  function quorumVotes() public pure returns (uint256) { return 50000e18; } // 50,000 = 5% of HTG
 
   /// @notice The number of votes required in order for a voter to become a proposer
-  function proposalThreshold() public pure returns (uint256) { return 1000e18; } // 1,000 = 1% of HTG
+  function proposalThreshold() public pure returns (uint256) { return 10000e18; } // 10,000 = 1% of HTG
 
   /// @notice The delay before voting on a proposal may take place, once proposed
   function votingDelay() public pure returns (uint256) { return 1; } // 1 block
@@ -173,9 +173,9 @@ contract GovernorAlpha {
       return ProposalState.Pending;
     } else if (block.number <= proposal.endBlock) {
       return ProposalState.Active;
-    } else if (proposal.forVotes <= proposal.againstVotes || proposal.forVotes < quorumVotes()) {
+    } else if (proposal.forVotes <= proposal.againstVotes || proposal.rawVotes < quorumVotes()) {
       return ProposalState.Defeated;
-    } else if (proposal.forVotes >= proposal.againstVotes && proposal.forVotes >= quorumVotes()) {
+    } else if (proposal.forVotes >= proposal.againstVotes && proposal.rawVotes >= quorumVotes()) {
       return ProposalState.Succeeded;
     }
   }
