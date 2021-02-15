@@ -225,7 +225,7 @@ class App extends Component {
         `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71afe&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
       (res) => {
         const data = JSON.parse(res);
-        const balance = this.state.web3.utils.fromWei(data.result);
+        const balance = data.result / 10**18;
         if(balance > 0) {
           this.setState({balance});
         }
@@ -241,13 +241,11 @@ class App extends Component {
         }
       });
     } else {
-      // Default to Ropsten for now
-      // TODO: Default to mainnet once it's populated with proposals
       this.xhr(
-        `https://api-rinkeby.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x6b5face539505bac2b3bf5746070445f5fda4afe&address=${this.state.account}`, 
+        `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71afe&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
       (res) => {
         const data = JSON.parse(res);
-        const balance = data.result
+        const balance = data.result / 10**18;
         if(balance > 0) {
           this.setState({balance});
         }

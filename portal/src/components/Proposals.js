@@ -40,10 +40,9 @@ class Proposals extends Component {
         }
       });
     } else {
-      // Default to Rinkeby for now
-      // TODO: Default to mainnet once it's populated with proposals
+      // Default to Mainnet
       this.props.xhr(
-        "http://localhost:8000/rinkeby/proposals/", 
+        "http://localhost:8000/mainnet/proposals/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
