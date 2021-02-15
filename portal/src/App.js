@@ -222,7 +222,7 @@ class App extends Component {
   getTokenBalance = () => {
     if(this.state.network === 'Mainnet') {
       this.xhr(
-        `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71afe&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
+        `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71af&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
       (res) => {
         const data = JSON.parse(res);
         const balance = data.result / 10**18;
@@ -242,7 +242,7 @@ class App extends Component {
       });
     } else {
       this.xhr(
-        `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71afe&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
+        `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xbff89386d062c6040ed1955e180c87dd00bb71af&apiKey=2SDT7WUWQDZ8EJZWHP6QUPEZAX8ZE7VPV2&address=${this.state.account}`, 
       (res) => {
         const data = JSON.parse(res);
         const balance = data.result / 10**18;
