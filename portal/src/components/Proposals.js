@@ -14,13 +14,13 @@ class Proposals extends Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     setInterval(() => {
       this.getProposals();
     }, 2000);
   }
 
-  getProposals = async () => {
+  getProposals = () => {
     if(this.props.network === 'Mainnet') {
       this.props.xhr(
         "http://localhost:8000/mainnet/proposals/", 
