@@ -14,10 +14,10 @@ class Proposal extends Component {
     }
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.getProposals();
-    }, 2000);
+  async componentDidMount() {
+    // setInterval(() => {
+    await this.getProposals();
+    // }, 2000);
   }
 
   getState = (stateId) => {
@@ -34,7 +34,7 @@ class Proposal extends Component {
     }
   }
 
-  getProposals = () => {
+  getProposals = async () => {
     if(this.props.network === 'Mainnet') {
       this.props.xhr(
         "http://localhost:8000/mainnet/proposal/" + this.props.id + "/state/", 
