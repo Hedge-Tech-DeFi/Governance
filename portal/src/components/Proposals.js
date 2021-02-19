@@ -23,7 +23,7 @@ class Proposals extends Component {
   getProposals = async () => {
     if(this.props.network === 'Mainnet') {
       this.props.xhr(
-        "http://localhost:8000/mainnet/proposals/", 
+        "http://hedgetech.ngrok.io:8000/mainnet/proposals/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data.proposals) {
@@ -32,7 +32,7 @@ class Proposals extends Component {
       });
     } else if(this.props.network === 'Rinkeby') {
       this.props.xhr(
-        "http://localhost:8000/rinkeby/proposals/", 
+        "http://hedgetech.ngrok.io:8000/rinkeby/proposals/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
@@ -42,7 +42,7 @@ class Proposals extends Component {
     } else {
       // Default to Mainnet
       this.props.xhr(
-        "http://localhost:8000/mainnet/proposals/", 
+        "http://hedgetech.ngrok.io:8000/mainnet/proposals/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
