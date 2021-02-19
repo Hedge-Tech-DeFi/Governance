@@ -37,7 +37,7 @@ class Proposal extends Component {
   getProposals = async () => {
     if(this.props.network === 'Mainnet') {
       this.props.xhr(
-        "http://151.106.108.1:8000/mainnet/proposal/" + this.props.id + "/state/", 
+        "https://151.106.108.1:8000/mainnet/proposal/" + this.props.id + "/state/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
@@ -47,7 +47,7 @@ class Proposal extends Component {
       });
     } else if(this.props.network === 'Rinkeby') {
       this.props.xhr(
-        "http://151.106.108.1:8000/rinkeby/proposal/" + this.props.id + "/state/", 
+        "https://151.106.108.1:8000/rinkeby/proposal/" + this.props.id + "/state/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
@@ -58,7 +58,7 @@ class Proposal extends Component {
     } else {
       // Default to Mainnet
       this.props.xhr(
-        "http://151.106.108.1:8000/mainnet/proposal/" + this.props.id + "/state/", 
+        "https://151.106.108.1:8000/mainnet/proposal/" + this.props.id + "/state/", 
       (res) => {
         const data = JSON.parse(res);
         if(this.state.proposals !== data) {
