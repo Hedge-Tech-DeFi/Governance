@@ -73,17 +73,19 @@ class Proposals extends Component {
       });
     }
 
+    if (this.props.balance >= 10000) {
+      proposals.push(
+        <ProposalDialog
+          title={"Add Proposal"}
+          description={""} 
+          key={-1}
+          id={-1}
+          end={0}
+          {...this.props}
+        />
+      );
+    }
 
-    proposals.push(
-      <ProposalDialog
-        title={"Add Proposal"}
-        description={""} 
-        key={-1}
-        id={-1}
-        end={0}
-        {...this.props}
-      />
-    );
 
     return (
       <section className="proposals">

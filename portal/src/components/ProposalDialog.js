@@ -36,7 +36,23 @@ class ProposalDialog extends Component {
       });
   }
 
-  render() {    
+  handlePropose = () => {
+    this.props.contract.methods.propose(this.state.description)
+      .send({from: this.props.account}, (err, transactionHash) => {
+        this.props.setMessage('Transaction Pending...', transactionHash);
+      }).on('confirmation', (number, receipt) => {
+        if(number === 0) {
+          this.props.setMessage('Transaction Confirmed!', receipt.transactionHash);
+        }
+        setTimeout(() => {
+          this.props.clearMessage();
+        }, 5000);
+      }).on('error', (err, receipt) => {
+        this.props.setMessage('Transaction Failed.', receipt ? receipt.transactionHash : null);
+      });
+  }
+
+  render() {
     return (
       <div className="proposal">
         <h4 className="proposal__title">
