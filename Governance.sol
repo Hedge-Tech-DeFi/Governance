@@ -98,6 +98,7 @@ contract GovernorAlpha {
   }
 
   function propose (string memory description) public returns (uint256) {
+    require(htg.balanceOf(msg.sender) >= proposalThreshold());
     address _proposer = msg.sender;
     uint256 _startBlock = block.number;
     uint256 _endBlock = _startBlock + votingPeriod();
